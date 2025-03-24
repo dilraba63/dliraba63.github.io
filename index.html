@@ -1,60 +1,511 @@
 <!DOCTYPE html>
-<html lang="zh-ch">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <title>高坂滑稽果的自我介绍</title>
+    <title>二次元风格个人博客</title>
+    <style>
+        :root {
+            --primary-color: #ff85a2;
+            --secondary-color: #8b5cf6;
+            --background-color: #fffbfb;
+            --text-color: #333;
+            --accent-color: #57b8ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffcbe0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--primary-color);
+        }
+        
+        nav {
+            background-color: white;
+            margin-top: 20px;
+            border-radius: 30px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        main {
+            display: flex;
+            padding: 30px 0;
+            gap: 30px;
+        }
+        
+        .content {
+            flex: 2;
+        }
+        
+        .sidebar {
+            flex: 1;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .post {
+            margin-bottom: 40px;
+        }
+        
+        .post-title {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .post-meta {
+            display: flex;
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            align-items: center;
+        }
+        
+        .post-meta > div {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-meta i {
+            margin-right: 5px;
+        }
+        
+        .post-excerpt {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .about-me {
+            text-align: center;
+        }
+        
+        .sidebar-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 4px solid var(--primary-color);
+            padding: 3px;
+            background-color: white;
+        }
+        
+        .sidebar-avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            margin: 0 10px;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background-color: #f0f0f0;
+            color: #666;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .recent-posts li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+        
+        .recent-posts li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .recent-posts a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .recent-posts a:hover {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* 二次元风格装饰 */
+        .kawaii-element {
+            position: absolute;
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* 媒体查询 */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
-    
-    <div class="bg">
-        <div class="proflieCard">
-            <div class="logo1">
-                <img src="logo.png" alt="" class="logo2">
-            </div>
-            <p class="name">高坂滑稽果</p>
-            
-            <div class="slogan" id="slogan">
-                <p class="slogan2" id="slogan2">如果奇迹有颜色，那么一定是橙色！</p>
-            </div>
-            <div class="buttons">
-                <button class="button1" onclick="aboutMe()">关于我</button>
-                <button class="button1" onclick="window.open('https://funny233.xyz')">进入博客</button>
-                <button class="button1" onclick="window.open('https://status.funny233.xyz')">服务器状态</button>
-            </div>
-
-            <footer class="footer">
-                <p class="footer2">Openned in <a target="_blank" href="https://github.com/woziji2200/ProfilePage">Github</a></p>
-
-                <p class="footer2">&copy2021 高坂滑稽果 &nbsp 素材来源 <a target="_blank" href="https://card.niconi.co.ni">LL查卡器</a> &nbsp 作者 <a target="_blank" href="https://www.funy233.xyz">高坂滑稽果</a></p>
-            </footer>
-
-        </div>
-
+    <header>
+        <div class="kawaii-element" style="top: 20px; left: 15%;">✨</div>
+        <div class="kawaii-element" style="top: 50px; right: 20%;">🌸</div>
+        <div class="kawaii-element" style="bottom: 30px; left: 30%;">🎀</div>
+        <div class="kawaii-element" style="bottom: 50px; right: 25%;">⭐</div>
         
+        <div class="container">
+            <div class="header-content">
+                <div class="avatar">
+                    <div class="avatar-img">
+                        メン
+                    </div>
+                </div>
+                <h1>二次元世界の日記</h1>
+                <p>欢迎来到我的二次元小世界~</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">动漫推荐</a></li>
+                <li><a href="#">插画作品</a></li>
+                <li><a href="#">二次元资讯</a></li>
+                <li><a href="#">关于我</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div class="content">
+                <div class="card">
+                    <h2>最新文章</h2>
+                    
+                    <div class="post">
+                        <h3 class="post-title">《间谍过家家》第二季观后感</h3>
+                        <div class="post-meta">
+                            <div class="post-date">📅 2025年3月12日</div>
+                            <div class="post-category">📂 动漫评论</div>
+                            <div class="post-views">👁️ 328</div>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>最近完结的《间谍过家家》第二季真是太精彩了！Loid和Yor的组合依然强大，而小Anya的表情包更是层出不穷。这部作品完美融合了家庭温情与间谍动作元素，让人欲罢不能...</p>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                    
+                    <div class="post">
+                        <h3 class="post-title">我最喜欢的十部治愈系动画</h3>
+                        <div class="post-meta">
+                            <div class="post-date">📅 2025年3月5日</div>
+                            <div class="post-category">📂 动漫推荐</div>
+                            <div class="post-views">👁️ 512</div>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>在忙碌的日常中，有时候我们需要一些治愈系的动画来放松心情。从《夏目友人帐》到《悠哉日常大王》，这些作品都能让你的心情如沐春风。今天我想分享我最爱的十部治愈系动画，希望能给大家带来一些温暖...</p>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                    
+                    <div class="post">
+                        <h3 class="post-title">我的数位板绘画学习日记</h3>
+                        <div class="post-meta">
+                            <div class="post-date">📅 2025年2月28日</div>
+                            <div class="post-category">📂 插画创作</div>
+                            <div class="post-views">👁️ 435</div>
+                        </div>
+                        <div class="post-excerpt">
+                            <p>入手新数位板已经一个月了，从一开始的手忙脚乱到现在能画出简单的人物，这一路走来确实不容易。这篇文章我想分享一下我的学习经验和一些实用技巧，希望对同样在学习绘画的朋友有所帮助...</p>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="card about-me">
+                    <h2>关于我</h2>
+                    <div class="sidebar-avatar">
+                        <div class="sidebar-avatar-img">
+                            メン
+                        </div>
+                    </div>
+                    <p>二次元爱好者 | 轻小说控 | 业余插画师</p>
+                    <p>喜欢分享动漫心得和插画作品，希望在这里结交志同道合的朋友~</p>
+                    <div class="social-links">
+                        <a href="#">🌐</a>
+                        <a href="#">📷</a>
+                        <a href="#">🎮</a>
+                        <a href="#">📝</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>标签云</h2>
+                    <div class="tag-cloud">
+                        <span class="tag">动漫</span>
+                        <span class="tag">二次元</span>
+                        <span class="tag">插画</span>
+                        <span class="tag">轻小说</span>
+                        <span class="tag">COSPLAY</span>
+                        <span class="tag">声优</span>
+                        <span class="tag">游戏</span>
+                        <span class="tag">周边</span>
+                        <span class="tag">日本文化</span>
+                        <span class="tag">绘画学习</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>最近文章</h2>
+                    <ul class="recent-posts">
+                        <li><a href="#">2025年春季新番前瞻</a></li>
+                        <li><a href="#">如何提高你的插画水平</a></li>
+                        <li><a href="#">我收藏的动漫周边展示</a></li>
+                        <li><a href="#">轻小说推荐：这些作品不容错过</a></li>
+                        <li><a href="#">Cosplay摄影技巧分享</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
     </div>
     
-    
-
-    <img src="lihui.texb" class="lihui" id="lihui" alt="">
-    <div class="background" id="background"></div>
-    <div class="yinghua" id="yinghua"></div>
-    <div class="background2" id="background2"></div>
-
-    <script src="main.js"></script>
-    <script>
-        window.onload=load2D_bg();
-        window.onload=load2D_bg2();
-        window.onload=load2D_bg2_2();//不写注释一时爽，写完再看火葬场
-        window.onload=load2D_lihui();
-        window.onload=load2D_yinghua();
-        
-        
-    </script>
-    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">首页</a>
+                    <a href="#">关于</a>
+                    <a href="#">留言板</a>
+                    <a href="#">友情链接</a>
+                </div>
+                <p class="copyright">© 2025 二次元世界の日記 | 用热爱创造价值</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
